@@ -1,0 +1,11 @@
+com\school\services\webscokets\ChatEndPoint$1.class
+com\school\services\webscokets\RoomWebscocket.class
+com\school\services\providers\StudentResource.class
+com\school\services\providers\Student.class
+com\school\services\providers\studentservlet.class
+com\school\services\providers\StudentClient.class
+com\school\services\ejbs\RoomMDB.class
+com\school\services\webscokets\ServerConfig.class
+com\school\services\providers\Schoolapp.class
+com\school\services\providers\SchoolServletFilter.class
+com\school\services\webscokets\ChatEndPoint.class

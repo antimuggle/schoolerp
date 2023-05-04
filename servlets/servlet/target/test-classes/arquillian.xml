@@ -1,0 +1,14 @@
+<container qualifier="glassfish-remote">
+    <configuration>
+        <property name="allowConnectingToRunningServer">true</property>
+        <!--            <property name="glassFishHome">target/${glassfish.home}</property>-->
+        <property name="adminHost">localhost</property>
+        <property name="adminPort">2929</property>
+        <property name="httpPort">8080</property>
+        <property name="enableDerby">${enableDerby:false}</property>
+        <property name="outputToConsole">true</property>
+        <property name="adminUser">timo</property>
+        <property name="adminPassword">letmeIn</property>
+
+    </configuration>
+</container>

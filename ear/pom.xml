@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+
+
+  <parent>
+    <groupId>com.schoolproj</groupId>
+    <artifactId>data-access</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>ear</artifactId>
+  <packaging>ear</packaging>
+  <name>ear assembly</name>
+  
+  
+
+   <properties>
+    <glassfish.home>C:\users\Admin\glassfish6</glassfish.home>
+    <user.name>timo</user.name>
+    <domain.name>schoolproject</domain.name>
+    <test.int.skip>false</test.int.skip>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.schoolproj</groupId>
+      <artifactId>projects</artifactId>
+      <version>${project.version}</version>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
+      <groupId>com.schoolproj</groupId>
+      <artifactId>data-access-layer</artifactId>
+      <version>${project.version}</version>
+      <type>jar</type>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.schoolproj</groupId>
+      <artifactId>servlet</artifactId>
+      <version>${project.version}</version>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>com.schoolproj</groupId>
+      <artifactId>ejbs</artifactId>
+      <version>${project.version}</version>
+      <type>ejb</type>
+    </dependency>
+    
+
+    <dependency>
+      <groupId>com.schoolproj</groupId>
+      <artifactId>primary-source</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.schoolproj</groupId>
+      <artifactId>logging</artifactId>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+
+    <pluginManagement>
+        <plugins>
+            <!--This plugin's configuration is used to store Eclipse m2e settings 
+                only. It has no influence on the Maven build itself. -->
+            <plugin>
+                <groupId>org.eclipse.m2e</groupId>
+                <artifactId>lifecycle-mapping</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <lifecycleMappingMetadata>
+                        <pluginExecutions>
+                            <pluginExecution>
+                                <pluginExecutionFilter>
+                                    <groupId>
+                                        org.apache.maven.plugins
+                                    </groupId>
+                                    <artifactId>
+                                        maven-ear-plugin
+                                    </artifactId>
+                                    <versionRange>
+                                        [2.1.0,)
+                                    </versionRange>
+                                    <goals>
+                                        <goal>generate-application-xml</goal>
+                                    </goals>
+                                </pluginExecutionFilter>
+                                <action>
+                                <execute/>
+                                </action>
+                            </pluginExecution>
+                        </pluginExecutions>
+                    </lifecycleMappingMetadata>
+                </configuration>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+    <plugins>
+      <!--
+       <plugin>
+        <groupId>org.glassfish.maven.plugin</groupId>
+        <artifactId>maven-glassfish-plugin</artifactId>
+        <version>2.1</version>
+        
+        <configuration>
+          <glasssfishDirectory>${glassfish.home}</glasssfishDirectory>
+          <domainDirectory>C:\Users\ADMIN\GLASSFISH_SERVER3\glassfish\domains</domainDirectory>
+          <user>${user.name}</user>
+          <autoCreate>false</autoCreate>
+          <domain>${domain.name}</domain>
+          <password>letmeIn</password>
+          <debug>true</debug>
+          <echo>true</echo>
+         <terse>true</terse>
+          <components>
+            <component>
+              <name>${project.artifactId}</name>
+              <artifactId>${project.build.directory}\${project.build.finalname}.ear</artifactId>
+            </component>
+          </components>
+          <domain>
+            <name>${domain.name}</name>
+            <httpPort>8080</httpPort>
+            <adminPort>2929</adminPort>
+            
+          </domain>
+
+        </configuration>
+        <executions>
+          <execution>
+            <id>init-domain</id>
+            <phase></phase>
+            <goals>
+              <goal>start-domain</goal>
+            </goals>
+          </execution>
+          <execution>
+              <id>close-domain</id>
+              <phase></phase>
+              <goals>
+                  <goal>stop-domain</goal>
+              </goals>
+          </execution>
+        </executions>
+      </plugin>
+    -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-ear-plugin</artifactId>
+        <version>3.3.0</version>
+        <configuration>
+          <version>7</version>
+          <defaultLibBundleDir>/lib</defaultLibBundleDir>
+          <modules>
+
+            <webModule>
+              <groupId>com.schoolproj</groupId>
+              <artifactId>servlet</artifactId>
+              <contextRoot>/servlet</contextRoot>
+              <type>war</type>
+              <uri>/war</uri>
+              <unpack>true</unpack>
+            </webModule>
+
+            <ejbModule>
+              <groupId>com.schoolproj</groupId>
+              <artifactId>ejbs</artifactId>
+              <type>ejb</type>
+              <uri>/ejb</uri>
+              <unpack>true</unpack>
+
+            </ejbModule>
+            
+
+          </modules>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.schoolproj</groupId>
+    <artifactId>servlets</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>servlet</artifactId>
+  <packaging>war</packaging>
+
+  <name>servlet</name>
+
+  <properties>
+    <maven-bundle-plugin.version>5.1.8</maven-bundle-plugin.version>
+    <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+    <servlet-api.version>5.0.0</servlet-api.version>
+    <maven.compiler.source>18</maven.compiler.source>
+    <maven.compiler.target>18</maven.compiler.target>
+    <junit5.version>5.9.0</junit5.version>
+    <arquillian.version>1.7.0.Alpha14</arquillian.version>
+</properties>
+
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.glassfish.jersey</groupId>
+            <artifactId>jersey-bom</artifactId>
+            <version>3.1.0</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.tyrus</groupId>
+            <artifactId>tyrus-bom</artifactId>
+            <version>2.1.2</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap</groupId>
+            <artifactId>shrinkwrap-bom</artifactId>
+            <version>2.0.0-beta-1</version>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+
+<dependencies>
+    <dependency>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <version>${servlet-api.version}</version>
+        <scope>provided</scope>
+    </dependency>
+    
+    
+    <dependency>
+        <groupId>org.glassfish.jersey.containers</groupId>
+        <artifactId>jersey-container-servlet-core</artifactId>
+    </dependency>
+
+
+    <dependency>
+        <groupId>org.glassfish.jersey.inject</groupId>
+        <artifactId>jersey-hk2</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.jersey.core</groupId>
+        <artifactId>jersey-client</artifactId>
+        <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.jersey.core</groupId>
+        <artifactId>jersey-common</artifactId>
+        <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.jersey.core</groupId>
+        <artifactId>jersey-server</artifactId>
+        <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>jakarta.ws.rs</groupId>
+        <artifactId>jakarta.ws.rs-api</artifactId>
+        <version>3.1.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.tyrus</groupId>
+        <artifactId>tyrus-server</artifactId>
+        <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.tyrus</groupId>
+        <artifactId>tyrus-container-servlet</artifactId>
+        <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>jakarta.websocket</groupId>
+        <artifactId>jakarta.websocket-api</artifactId>
+        <version>2.1.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>jakarta.platform</groupId>
+        <artifactId>jakarta.jakartaee-api</artifactId>
+        <version>9.0.0</version>
+    </dependency>
+<!--ejb dependencies-->
+     <dependency>
+        <groupId>jakarta.annotation</groupId>
+        <artifactId>jakarta.annotation-api</artifactId>
+        <version>2.1.1</version>
+      </dependency>
+      
+      <dependency>
+        <groupId>jakarta.ejb</groupId>
+        <artifactId>jakarta.ejb-api</artifactId>
+        <version>4.0.1</version>
+      </dependency>
+
+<!--ejb module-->
+    <dependency>
+      <groupId>com.schoolproj</groupId>
+      <artifactId>ejbs</artifactId>
+      <version>${project.version}</version>
+      <type>ejb</type>
+    </dependency>
+
+<!--data-access layer-->
+    <dependency>
+         <groupId>com.schoolproj</groupId>
+         <artifactId>data-access-layer</artifactId>
+         <version>${project.version}</version>
+         <type>jar</type>
+      </dependency>
+
+<!-- testing dependencies-->
+    <dependency>
+        <groupId>org.jboss.arquillian.junit5</groupId>
+        <artifactId>arquillian-junit5-container</artifactId>
+        <version>${arquillian.version}</version>
+        <scope>test</scope>
+    </dependency>
+        
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>${junit5.version}</version>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>${junit5.version}</version>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-params</artifactId>
+        <version>${junit5.version}</version>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.omnifaces.arquillian</groupId>
+        <artifactId>arquillian-glassfish-server-remote</artifactId>
+        <version>1.4</version>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest</artifactId>
+        <version>2.2</version>
+    </dependency>
+    
+   <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>5.3.0</version>
+        <scope>test</scope>
+    </dependency>
+ <!-- shrinkwrap depchain-->
+    <dependency>
+        <groupId>org.jboss.shrinkwrap</groupId>
+        <artifactId>shrinkwrap-impl-base</artifactId>
+        <version>2.0.0-beta-1</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.jboss.shrinkwrap</groupId>
+        <artifactId>shrinkwrap-api</artifactId>
+        <version>2.0.0-beta-1</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.jboss.shrinkwrap</groupId>
+        <artifactId>shrinkwrap-spi</artifactId>
+        <version>2.0.0-beta-1</version>
+    </dependency>
+    <!-- jndi dependency-->
+    <!--
+    <dependency>
+        <groupId>org.glassfish.main.common</groupId>
+        <artifactId>glassfish-naming</artifactId>
+        <version>6.2.5</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.main.ejb</groupId>
+        <artifactId>ejb-client</artifactId>
+        <version>6.2.5</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.main.extras</groupId>
+        <artifactId>appserv-rt</artifactId>
+        <version>6.2.5</version>
+    </dependency>
+    -->
+    <!--
+    <dependency>
+        <groupId>org.glassfish.jersey.inject</groupId>
+        <artifactId>jersey-hk2</artifactId>
+        <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.hk2</groupId>
+        <artifactId>hk2-api</artifactId>
+        <version>3.0.3</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.hk2</groupId>
+        <artifactId>hk2-runlevel</artifactId>
+        <version>3.0.3</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.glassfish.hk2</groupId>
+        <artifactId>hk2-utils</artifactId>
+        <version>3.0.1</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.glassfish.hk2</groupId>
+        <artifactId>hk2</artifactId>
+        <version>3.0.3</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.hk2</groupId>
+        <artifactId>hk2-locator</artifactId>
+        <version>3.0.3</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.hk2</groupId>
+        <artifactId>hk2-core</artifactId>
+        <version>3.0.3</version>
+    </dependency>
+    -->
+  </dependencies>
+
+  <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.3.2</version>
+            <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.12.4</version>
+        </plugin>
+  </plugins>
+  </build>
+  <!--
+  <repositories>
+    <repository>
+        <id>ejb-repo</id>
+        <url>C:/Users/Public/Documents/data-access/ejbs/target/ejbs-1.0.SNAPSHOT.jar</url>
+    </repository>
+
+    <repository>
+        <id>data-access-layer-repo</id>
+        <url>C:/Users/Public/Documents/data-access/projects/data-access-layer/target/data-access-layer-1.0.SNAPSHOT.jar</url>
+    </repository>
+  </repositories>
+  -->
+</project>

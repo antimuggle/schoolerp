@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Created-By: Apache Maven 3.8.6
+Built-By: chhumbucket
+Build-Jdk: 18.0.2.1
+Class-Path: lib/jakarta.annotation-jakarta.annotation-api-2.1.1.jar lib/
+ jakarta.ejb-jakarta.ejb-api-4.0.1.jar lib/jakarta.transaction-jakarta.t
+ ransaction-api-2.0.0.jar lib/com.schoolproj-data-access-layer-1.0-SNAPS
+ HOT.jar lib/com.microsoft.sqlserver-mssql-jdbc-11.2.0.jre11.jar lib/com
+ .microsoft.azure-msal4j-1.13.0.jar lib/com.nimbusds-oauth2-oidc-sdk-9.3
+ 5.jar lib/com.github.stephenc.jcip-jcip-annotations-1.0-1.jar lib/com.n
+ imbusds-content-type-2.2.jar lib/com.nimbusds-lang-tag-1.6.jar lib/com.
+ nimbusds-nimbus-jose-jwt-9.22.jar lib/net.minidev-json-smart-2.4.8.jar 
+ lib/net.minidev-accessors-smart-2.4.8.jar lib/org.ow2.asm-asm-9.1.jar l
+ ib/org.slf4j-slf4j-api-1.7.36.jar lib/com.fasterxml.jackson.core-jackso
+ n-databind-2.13.2.1.jar lib/com.fasterxml.jackson.core-jackson-annotati
+ ons-2.13.2.jar lib/com.fasterxml.jackson.core-jackson-core-2.13.2.jar l
+ ib/com.schoolproj-primary-source-1.0-SNAPSHOT.jar lib/com.schoolproj-lo
+ gging-1.0-SNAPSHOT.jar lib/jakarta.platform-jakarta.jakartaee-api-9.0.0
+ .jar
+
